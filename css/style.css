@@ -72,6 +72,27 @@ header {
   flex-wrap: wrap;
 }
 
+/* Audio controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#audio-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 5px;
+}
+
+#volume-slider {
+  width: 100px;
+  accent-color: var(--accent-color);
+}
+
 h1 {
   font-size: 2rem;
   color: var(--accent-color);

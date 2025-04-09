@@ -2,6 +2,7 @@
 let gameState;
 let apiHandler;
 let uiHandler;
+let audioManager; // Add audio manager
 
 // Initialize the application
 function initialize() {
@@ -11,9 +12,13 @@ function initialize() {
   gameState = new GameState();
   apiHandler = new ApiHandler();
   uiHandler = new UiHandler(gameState);
+  audioManager = new AudioManager(gameState); // Initialize audio manager
   
   // Initialize the UI
   uiHandler.initializeUi();
+  
+  // Start ambient audio
+  audioManager.startAmbience();
   
   // Add reset button functionality
   const resetButton = document.getElementById('reset-button');
@@ -28,6 +33,9 @@ function initialize() {
 function resetSimulation() {
   // Create confirmation dialog
   if (confirm('The prairie will fade away like morning mist, memories scattered to the wind. Are you sure you want to begin anew?')) {
+    // Play reset sound
+    audioManager.playSoundEffect('reset');
+    
     // Save the current API key and provider
     const apiKey = apiHandler.apiKey;
     const apiProvider = apiHandler.apiProvider;

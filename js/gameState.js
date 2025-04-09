@@ -86,6 +86,12 @@ class GameState {
     if (directionMap[direction]) {
       this.playerLocation.x += directionMap[direction].x;
       this.playerLocation.y += directionMap[direction].y;
+      
+      // Update ambient audio based on new location
+      if (window.audioManager) {
+        window.audioManager.updateAmbientSound();
+      }
+      
       this.saveState();
       return true;
     }

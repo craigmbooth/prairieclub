@@ -10,6 +10,8 @@ class UiHandler {
     this.apiKeyForm = document.getElementById('api-key-form');
     this.apiKeyInput = document.getElementById('api-key-input');
     this.apiProvider = document.getElementById('api-provider');
+    this.audioButton = document.getElementById('audio-toggle');
+    this.volumeSlider = document.getElementById('volume-slider');
     
     this.isWaitingForResponse = false;
     
@@ -30,6 +32,34 @@ class UiHandler {
       this.saveApiKey();
     });
     
+    // Audio button
+    if (this.audioButton) {
+      this.audioButton.addEventListener('click', () => {
+        const isMuted = audioManager.toggleMute();
+        this.updateAudioButtonIcon(isMuted);
+      });
+    }
+    
+    // Volume slider
+    if (this.volumeSlider) {
+      this.volumeSlider.addEventListener('input', (e) => {
+        const volume = parseFloat(e.target.value);
+        audioManager.setVolume(volume);
+      });
+    }
+  }
+  
+  // Update the audio button icon
+  updateAudioButtonIcon(isMuted) {
+    if (this.audioButton) {
+      if (isMuted) {
+        this.audioButton.innerHTML = '🔇';
+        this.audioButton.title = 'Unmute';
+      } else {
+        this.audioButton.innerHTML = '🔊';
+        this.audioButton.title = 'Mute';
+      }
+    }
   }
 
   // Display the API key modal
@@ -69,6 +99,9 @@ class UiHandler {
       this.showApiKeyModal();
       return;
     }
+    
+    // Play command submit sound
+    audioManager.playSoundEffect('commandSubmit');
     
     this.addCommandToHistory(command);
     this.commandInput.value = '';
