@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Map Without Edges</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Redirect to landing page if coming directly to index.html
+    if (!document.referrer.includes('landing.html') && !sessionStorage.getItem('enteredFromLanding')) {
+      window.location.href = 'landing.html';
+    }
+    // Mark that user has entered from landing page
+    sessionStorage.setItem('enteredFromLanding', 'true');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>A Map Without Edges</h1>
+      <button id="reset-button" class="whisper-button">Whisper to the Wind</button>
+    </header>
+    
+    <main>
+      <div id="narrative-display"></div>
+      
+      <div id="sidebar">
+        <div id="command-history-container">
+          <h2>Command History</h2>
+          <div id="command-history"></div>
+        </div>
+      </div>
+      
+      <div id="input-area">
+        <form id="command-form">
+          <input type="text" id="command-input" placeholder="What will you do?" autocomplete="off">
+          <button type="submit" id="submit-button">→</button>
+        </form>
+      </div>
+    </main>
+    
+    <div id="api-key-modal" class="modal">
+      <div class="modal-content">
+        <h2>Enter your API Key</h2>
+        <p>"A Map Without Edges" uses GPT to generate your adventure. Please enter your API key:</p>
+        <form id="api-key-form">
+          <select id="api-provider">
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+          </select>
+          <input type="password" id="api-key-input" placeholder="Your API Key">
+          <button type="submit">Save Key</button>
+        </form>
+        <p class="disclaimer">Your API key is stored locally in your browser and never sent to our servers.</p>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/config.js"></script>
+  <script src="js/gameState.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
