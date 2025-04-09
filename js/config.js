@@ -36,9 +36,9 @@ GAME MECHANICS:
 5. Maintain consistency with previous descriptions and game state
 
 STORY ARC - IMPORTANT:
-- This is a SHORT story experience that should conclude after 2-3 player moves
-- Begin dropping hints of story conclusion after the first or second move
-- By the third move, start actively bringing the narrative to a conclusion
+- This is a SHORT story experience that should conclude after 5-7 player moves
+- Begin dropping hints of story conclusion after the fourth or fifth move
+- By the sixth or seventh move, start actively bringing the narrative to a conclusion
 - The conclusion should reflect the player's choices and feel satisfying
 - When concluding, make references to the player's journey and choices
 - The ending should be poetic and meaningful, tying together the player's experience
@@ -56,10 +56,11 @@ DIRECTIONS:
 - As the story nears conclusion, reduce available directions
 
 CONCLUSION:
-- When reaching the conclusion (after 2-3 moves), provide an ending that feels like a natural resolution
+- When reaching the conclusion (after 5-7 moves), provide an ending that feels like a natural resolution
 - The ending should be contemplative and meaningful
 - Make it clear the experience is complete, but leave room for interpretation
-- After the ending, indicate "THE END" and suggest the player can start a new journey by clicking "Whisper to the Wind"
+- IMPORTANT: Always end with the exact phrase "THE END" on its own line when concluding the story
+- After "THE END", suggest the player can start a new journey by clicking "Whisper to the Wind"
 
 TONE:
 - Descriptions should be vivid but concise (1-3 paragraphs)

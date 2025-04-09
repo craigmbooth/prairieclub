@@ -116,13 +116,22 @@ class UiHandler {
   addCommandToHistory(command) {
     const commandElement = document.createElement('div');
     commandElement.classList.add('command');
-    commandElement.textContent = `${command}`;
+    commandElement.textContent = `> ${command}`;
     this.commandHistory.appendChild(commandElement);
     this.commandHistory.scrollTop = this.commandHistory.scrollHeight;
   }
 
   // Display the response in the narrative display
   displayResponse(command, responseText) {
+    // First add the user command to the narrative display
+    if (command) {
+      const commandElement = document.createElement('div');
+      commandElement.classList.add('user-command');
+      commandElement.textContent = `> ${command}`;
+      this.narrativeDisplay.appendChild(commandElement);
+    }
+    
+    // Then add the response
     const responseElement = document.createElement('div');
     responseElement.classList.add('command-response', 'new-content');
     
@@ -140,6 +149,14 @@ class UiHandler {
   
   // Display the story conclusion with special formatting
   displayConclusion(command, responseText) {
+    // First add the user command to the narrative display
+    if (command) {
+      const commandElement = document.createElement('div');
+      commandElement.classList.add('user-command');
+      commandElement.textContent = `> ${command}`;
+      this.narrativeDisplay.appendChild(commandElement);
+    }
+    
     const conclusionElement = document.createElement('div');
     conclusionElement.classList.add('conclusion', 'new-content');
     
@@ -255,7 +272,7 @@ class UiHandler {
       if (turn.command) { // Skip the initial narrative
         const commandElement = document.createElement('div');
         commandElement.classList.add('command');
-        commandElement.textContent = `${turn.command}`;
+        commandElement.textContent = `> ${turn.command}`;
         this.commandHistory.appendChild(commandElement);
       }
     }

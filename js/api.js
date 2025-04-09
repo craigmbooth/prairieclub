@@ -157,14 +157,34 @@ Player command: ${userCommand}
   
   // Check if the response indicates that the story has concluded
   checkForConclusion(response) {
-    // Look for conclusion markers
-    return (
-      response.includes("THE END") || 
-      response.toLowerCase().includes("whisper to the wind") ||
-      response.toLowerCase().includes("your journey has") ||
-      (response.toLowerCase().includes("end") && 
-       response.toLowerCase().includes("journey"))
-    );
+    const lowerResponse = response.toLowerCase();
+    
+    // Check for explicit conclusion markers
+    if (response.includes("THE END")) {
+      return true;
+    }
+    
+    // Check for the most explicit phrases that should trigger the conclusion
+    if (lowerResponse.includes("whisper to the wind to begin a new journey")) {
+      return true;
+    }
+    
+    // Check for phrases about journey concluding/ending
+    if (lowerResponse.includes("your journey has concluded") || 
+        lowerResponse.includes("your journey has ended")) {
+      return true;
+    }
+    
+    // Don't trigger conclusion just because both "end" and "journey" appear somewhere in text
+    // Check for specific combined patterns instead
+    if ((lowerResponse.includes("end of your journey") || 
+         lowerResponse.includes("journey ends") || 
+         lowerResponse.includes("journey has come to an end"))) {
+      return true;
+    }
+    
+    // Don't conclude for other cases
+    return false;
   }
   
   // Analyze the response and update game state accordingly

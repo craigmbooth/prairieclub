@@ -250,17 +250,7 @@ main {
   font-size: 0.85rem;
   letter-spacing: 0.5px;
   position: relative;
-  padding-left: 14px;
   transition: all 0.2s ease;
-}
-
-#command-history .command::before {
-  content: "›";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--secondary-color);
-  opacity: 0.7;
 }
 
 #command-history .command:hover {
@@ -461,6 +451,15 @@ main::before {
 }
 
 /* Special styling for command response */
+.user-command {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  margin: 20px 0 10px 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 .command-response {
   position: relative;
   padding-left: 18px;
